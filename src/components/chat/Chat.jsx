@@ -10,8 +10,8 @@ function Chat() {
   const endRef = useRef(null);
 
 useEffect(() => {
-  chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-}, [third])
+  endRef.current?.scrollIntoView({ behavior: 'smooth' });
+}, [])
 
 
   const handleEmoji = e => {

@@ -6,7 +6,7 @@ function Detail() {
     <div className='detail' >
       <div className="info">
         <img src="./avatar.png" alt="" />
-        <h2>Bikram</h2>
+        <h3>Bikram</h3>
         <p>Everyday is a new beginning.</p>
       </div>
       <div className="more">
@@ -59,7 +59,7 @@ function Detail() {
           </div>
         </div>
         <button>Block User</button>
-        <button>Logout</button>
+        <button className='logout' >Logout</button>
       </div>
     </div>
   )
