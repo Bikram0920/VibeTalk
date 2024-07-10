@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import "./login.css"
 import { toast } from 'react-toastify'
 import {auth, db} from '../library/firebase'
-import {createUserWithEmailAndPassword } from 'firebase/auth'
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
 import upload from '../library/upload'
 
@@ -24,12 +24,6 @@ function Login() {
         url: URL.createObjectURL(e.target.files[0])
       })
     }
-  }
-
-  const handleLogin = e =>{
-    e.preventDefault();
-
-
   }
 
   const handleRegister = async (e) =>{
@@ -74,13 +68,36 @@ function Login() {
     }
   }
 
+  const handleLogin = async (e) =>{
+    e.preventDefault();
+
+    setLoading(true);
+
+    const formData = new FormData(e.target)
+
+    const {email, password} = Object.fromEntries(formData);
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log('User signed in:', user);
+      return user;
+    } catch (error) {
+      console.error('Error signing in:', error.message);
+      toast.error(error.message);
+    } finally{
+      setLoading(true);
+    }
+
+  }
+
   return (
     <div className="login">
       <div className="item1">
         <h2>Welcome Back,</h2>
         <form action="" onSubmit={handleLogin}>
-          <input type="email" placeholder='Enter Email...'name='email'/>
-          <input type="password" placeholder='Enter Password...' name='password'/>
+          <input type="email" placeholder='Email'name='email'/>
+          <input type="password" placeholder='Password' name='password'/>
           <button disabled = {loading}>{loading? "Loading" : "Sign In" }</button>
         </form>
       </div>
