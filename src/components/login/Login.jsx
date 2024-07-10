@@ -29,6 +29,7 @@ function Login() {
   const handleLogin = e =>{
     e.preventDefault();
 
+
   }
 
   const handleRegister = async (e) =>{
@@ -80,7 +81,7 @@ function Login() {
         <form action="" onSubmit={handleLogin}>
           <input type="email" placeholder='Enter Email...'name='email'/>
           <input type="password" placeholder='Enter Password...' name='password'/>
-          <button disabled = {loading}>{loading? "Loading" : "SignUp" }</button>
+          <button disabled = {loading}>{loading? "Loading" : "Sign In" }</button>
         </form>
       </div>
       <div className="separator"></div>
@@ -101,7 +102,7 @@ function Login() {
           <input type="email" placeholder='Email' name='email'/>
           <input type="password" placeholder='Password' name='password'/>
           <input type="password" placeholder='Confirm Password' name='cpassword'/>
-          <button disabled={loading}>{loading? "Loading" : "SignUp" }</button>
+          <button disabled={loading}>{loading? "Loading" : "Sign Up" }</button>
         </form>
       </div>
     </div>
