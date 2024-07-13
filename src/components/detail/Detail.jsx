@@ -1,14 +1,38 @@
 import React from 'react'
 import "./detail.css"
 import { signOut } from 'firebase/auth'
-import { auth } from '../library/firebase'
+import { auth, db } from '../library/firebase'
+import { useChatStore } from '../library/chatStore'
+import { arrayUnion, doc, updateDoc } from 'firebase/firestore'
+import { useUserStore } from '../library/userStore'
 
 function Detail() {
+
+  const {user,chatId,isReceiverBlocked,isCurrentUserBlocked,changeBlock} = useChatStore();
+  const {currentUser} = useUserStore();
+
+  const handleBlock = async () =>{
+
+    if(!user) return;
+
+    const userRef = doc(db,"users",currentUser.id)
+    try {
+      updateDoc(userRef,{
+        blocked: isReceiverBlocked ? arrayRemove(user.id) : arrayUnion(user.id)
+      })
+      changeBlock();
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
+
   return (
     <div className='detail' >
       <div className="info">
-        <img src="./avatar.png" alt="" />
-        <h3>Bikram</h3>
+        <img src={user?.avatar || "./avatar.png"} alt="" />
+        <h3>{user?.username}</h3>
         <p>Everyday is a new beginning.</p>
       </div>
       <div className="more">
@@ -60,7 +84,9 @@ function Detail() {
             <img src="./arrowUp.png" alt="" />
           </div>
         </div>
-        <button>Block User</button>
+        <button onClick={handleBlock}>
+          {isCurrentUserBlocked ? "You are Blocked" : isReceiverBlocked ? "User Blocked" : "Block User"}
+        </button>
         <button className='logout' onClick={() => auth.signOut()} >Logout</button>
       </div>
     </div>

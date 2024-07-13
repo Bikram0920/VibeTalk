@@ -139,6 +139,10 @@
       background:rgb(17,25,40,0.5);
       padding: 20px;
       border-radius: 5px;
+
+      &:disabled{
+        cursor: not-allowed;
+      }
     }
 
     .emojis{
@@ -158,6 +162,11 @@
       padding: 10px 20px;
       border-radius: 5px;
       cursor: pointer;
+
+      &:disabled{
+        background-color: #6585d6;
+        cursor: not-allowed;
+      }
     }
   }
 }
