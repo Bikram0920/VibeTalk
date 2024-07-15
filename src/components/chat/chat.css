@@ -73,6 +73,7 @@
         .texts{
           p{
             background: #5183fe;
+            align-self: flex-end;
           }
         }
       }
@@ -103,7 +104,7 @@
           border-radius: 10px;
           font-size: 14px;
           max-width: max-content;
-          align-self: flex-end;
+          align-self: flex-start;
         }
         span{
           font-size: 12px;

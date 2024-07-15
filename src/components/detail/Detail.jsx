@@ -65,7 +65,7 @@ function Detail() {
       <div className="info">
         <img src={user?.avatar || "./avatar.png"} alt="" />
         <h3>{user?.username}</h3>
-        <p>Everyday is a new beginning.</p>
+        <p>{user?.userBio}</p>
       </div>
       <div className="more">
         <div className="items">

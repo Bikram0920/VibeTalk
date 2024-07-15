@@ -19,11 +19,50 @@
   .icons{
     display: flex;
     gap: 20px;
+    /* position: relative; */
 
     img{
       width: 20px;
       height: 20px;
       cursor: pointer;
+    }
+
+    .bio{
+      padding: 30px;
+      background-color: rgba(17, 25, 40, 0.801);
+      border-radius: 10px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 38vh;
+      width: 25vw;
+      display: flex;
+      justify-content: center;
+      margin: auto;
+
+      form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    
+        input{
+          padding: 15px;
+          outline: none;
+          border: none;
+          border-radius: 5px;
+        }
+        button{
+          padding: 15px;
+          background-color: #1a73e8;
+          color: white;
+          cursor: pointer;
+          border: none;
+          border-radius: 5px;
+        }
+      }
     }
   }
 }
